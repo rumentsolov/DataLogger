@@ -17,7 +17,7 @@ const char* recordFile = "C:\\Users\\USER\\Desktop\\record.txt";
 const char* inputFile = "https://www.rumentsolov.com/gallery/trend.csv";
 
 
-void writeRandToFle(std::string totalString, const char* newFile) {
+void writeToFL(std::string totalString, const char* newFile) {
     std::fstream file;
     file.open(newFile, std::ios::out | std::ios::app);
     if (!file.is_open()) {
@@ -106,7 +106,7 @@ void operateTXTFile() {
         newRecords[i].sendToStream(osTr);
     }
 
-    writeRandToFle(osTr.str(), recordFile);
+    writeToFL(osTr.str(), recordFile);
 }
 
 #endif 
