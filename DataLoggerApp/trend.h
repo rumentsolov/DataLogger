@@ -14,22 +14,8 @@ const char* rawFile = "C:\\Users\\USER\\Desktop\\rawfile.txt";
 const char* recordFile = "C:\\Users\\USER\\Desktop\\record.txt";
 const char* inputFile = "https://www.rumentsolov.com/gallery/trend.csv";
 
+void operateTXTFile() {
 
-void writeRandToFle(std::string totalString, const char* newFile) {
-    std::fstream file;
-    file.open(newFile);
-    if (!file.is_open()) {
-        std::ofstream out(newFile);
-    }
-    else
-    {
-
-        file << totalString << std::endl << std::endl;
-        file.close();
-    }
-}
-
-void operate(std::string buffer) {
 
     int counter = 0;
 
@@ -100,16 +86,15 @@ void operate(std::string buffer) {
         newRecords[i].sendToStream(osTr);
     }
 
-    std::string totalstring = osTr.str();
-    writeRandToFle(totalstring, recordFile);
 
 }
 
 int run()
 {
 
+    // OPERATING WITH INFO FROM CSV FILE AND CREATEST RAW TXT FILE TO WORKING WITH
+
     std::ofstream rawFileStream(rawFile, std::ofstream::binary); // op Stream for raw file
-    std::ofstream recordFileStream(recordFile, std::ofstream::binary); // op Stream for record file
 
     ComInit init;
     CComPtr<IStream> pStream; // use CComPtr so you don't have to manually call Release()
@@ -127,7 +112,6 @@ int run()
         DWORD bytesRead = 0;
         hr = pStream->Read(buffer, sizeof(buffer), &bytesRead);
 
-        if (bytesRead > 0) rawFileStream.write(buffer, bytesRead);
 
 
     } while (SUCCEEDED(hr) && hr != S_FALSE);
@@ -137,7 +121,6 @@ int run()
         //"ERROR: Download failed. HRESULT: 0x"
         return 2;
     }
-
 
 
     //"Job Done!" ;
