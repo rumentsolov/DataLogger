@@ -2,6 +2,7 @@
 #define PROCESS_H
 
 #include <iomanip>
+#include <iostream>
 #include <fstream>
 #include <sstream>
 #include <vector>
@@ -90,11 +91,15 @@ void operateTXTFile() {
         newRecords[i].sendToStream(osTr);
     }
 
+    
 
     std::fstream file;
-    file.open(recordFile);
-    file << osTr.str();
-    file.close();
+
+    file.open(recordFile, std::ios::in);
+    while(osTr)
+        file << osTr.str();
+        file.close();
+
 }
 
 #endif 

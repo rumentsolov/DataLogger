@@ -14,7 +14,7 @@
 int run()
 {
 
-    // OPERATING WITH INFO FROM CSV FILE AND CREATEST RAW TXT FILE TO WORKING WITH
+    // OPERATING WITH INFO FROM CSV FILE AND CREATE RAW TXT FILE TO PROCESSING WITH
 
     std::ofstream rawFileStream(rawFile, std::ofstream::binary); // op Stream for raw file
 
