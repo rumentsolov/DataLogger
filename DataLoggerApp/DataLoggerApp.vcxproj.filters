@@ -32,5 +32,8 @@
     <ClInclude Include="ComInit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Processment.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

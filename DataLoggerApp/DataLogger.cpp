@@ -2,7 +2,6 @@
 #include <atlbase.h> 
 #include "trend.h"
 
-
 using namespace System;
 using namespace System::Windows::Forms;
 

@@ -130,6 +130,7 @@
     <ClInclude Include="DataLogger.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Processment.h" />
     <ClInclude Include="Record.h" />
     <ClInclude Include="trend.h" />
   </ItemGroup>
