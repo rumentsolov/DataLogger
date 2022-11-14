@@ -1,8 +1,5 @@
 #include "DataLogger.h"
-
 #include <atlbase.h> 
-
-
 #include "trend.h"
 
 

@@ -19,7 +19,7 @@ void operateTXTFile() {
 
     int counter = 0;
 
-    std::stringstream myFile(buffer);
+    std::stringstream myFile(rawFile);
 
     std::string line;
     std::vector<Record> newRecords;
