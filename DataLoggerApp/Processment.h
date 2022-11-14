@@ -12,10 +12,24 @@
 #include "ComInit.h"
 
 
-    const char* rawFile = "C:\\Users\\USER\\Desktop\\rawfile.txt";
-    const char* recordFile = "C:\\Users\\USER\\Desktop\\record.txt";
-    const char* inputFile = "https://www.rumentsolov.com/gallery/trend.csv";
+const char* rawFile = "C:\\Users\\USER\\Desktop\\rawfile.txt";
+const char* recordFile = "C:\\Users\\USER\\Desktop\\record.txt";
+const char* inputFile = "https://www.rumentsolov.com/gallery/trend.csv";
 
+
+void writeRandToFle(std::string totalString, const char* newFile) {
+    std::fstream file;
+    file.open(newFile, std::ios::out | std::ios::app);
+    if (!file.is_open()) {
+        std::ofstream out(newFile);
+    }
+    else
+    {
+
+        file << totalString << std::endl << std::endl;
+        file.close();
+    }
+}
 
 void operateTXTFile() {
 
@@ -80,6 +94,7 @@ void operateTXTFile() {
             if (currentLine1 != 0.00 & currentLine2 != 0.00 & currentLine3 != 0.00)
             {
                 Record curRecord(id, controllerId, year, month, day, hour, minute, second, voltageLine12, voltageLine23, voltageLine31, currentLine1, currentLine2, currentLine3, combinatedPower, activePower, reactivePower, apparentPower, calculatedPower);
+
                 newRecords.push_back(curRecord);
             }
         }
@@ -91,15 +106,7 @@ void operateTXTFile() {
         newRecords[i].sendToStream(osTr);
     }
 
-    
-
-    std::fstream file;
-
-    file.open(recordFile, std::ios::in);
-    while(osTr)
-        file << osTr.str();
-        file.close();
-
+    writeRandToFle(osTr.str(), recordFile);
 }
 
 #endif 

@@ -43,8 +43,8 @@ int run()
         return 2;
     }
 
-
-    //"Job Done!" ;
+    operateTXTFile(); //"Job Done!" ;
+    
 
     return 0;
 }
