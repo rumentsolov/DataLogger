@@ -6,10 +6,14 @@
 #include <sstream>
 #include <vector>
 #include <string>
+
+#include "GlobalVariables.h"
 #include "ActionLogger.h"
 #include "Record.h"
 #include "ComInit.h"
 #include "Processment.h"
+
+
 
 int run()
 {
@@ -23,11 +27,11 @@ int run()
     HRESULT hr = URLOpenBlockingStreamW(nullptr, L"https://www.rumentsolov.com/gallery/trend.csv", &pStream, 0, nullptr);// Open the HTTP request
     if (FAILED(hr))
     {
-        //"ERROR: Could not connect. HRESULT: 0x"
+        //MessageBox::Show("ERROR: Could not connect. HRESULT: 0x");
         return 1;
     }
 
-    // Download the response and write it to file.
+    // Download the response and write it to file. Since I don't know how exactly the ComInit splits the stream (Google helped me here) , I write it to txt file and then I work with my file 
     char buffer[128];
     do
     {
@@ -39,11 +43,11 @@ int run()
 
     if (FAILED(hr))
     {
-        //"ERROR: Download failed. HRESULT: 0x"
+        //MessageBox::Show("ERROR: Download failed. HRESULT: 0x");
         return 2;
     }
 
-    operateTXTFile(); //"Job Done!" ;
+    operateTXTFile(); 
     
 
     return 0;

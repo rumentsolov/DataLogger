@@ -41,5 +41,8 @@
     <ClInclude Include="ActionLogger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GlobalVariables.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

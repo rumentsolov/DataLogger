@@ -17,12 +17,13 @@ const std::string currentDateTime() {
     return buf;
 }
 
-void LoginActionSave(std::string buff) {
+// SAVES THE ACTION DESCRIBED BY THE INPUT STRING WITH TIME TO LOCAL FILE
+void ActionSave(std::string buff) {
 
-    std::ofstream myLink;
-    myLink.open("LoginActions.txt");
-    myLink << currentDateTime() << "  " << buff << std::endl;
-    myLink.close();
+    std::ofstream myLogger;
+    myLogger.open("LoginActions.txt");
+    myLogger << currentDateTime() << "  " << buff << std::endl;
+    myLogger.close();
 }
 
 

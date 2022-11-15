@@ -2,6 +2,7 @@
 #include <atlbase.h> 
 #include "trend.h"
 #include "ActionLogger.h"
+#include "GlobalVariables.h"
 
 using namespace System;
 using namespace System::Windows::Forms;

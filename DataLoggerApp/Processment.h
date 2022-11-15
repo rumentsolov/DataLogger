@@ -12,20 +12,8 @@
 #include "Record.h"
 #include "ComInit.h"
 #include "ActionLogger.h"
-#include "GetDesktopPath.h"
+#include "GlobalVariables.h"
 
-std::string  path = GetDTPath();
-std::string  pathStr = path.c_str();
-std::string  rawName = "rawfile.txt";
-std::string  recordName = "record.txt";
-
-std::string rawFileString = pathStr + rawName;
-std::string recordFileString = pathStr + recordName;
-
-
-const char* rawFile = rawFileString.c_str();
-const char* recordFile = recordFileString.c_str();
-const char* inputFile = "https://www.rumentsolov.com/gallery/trend.csv";
 
 
 void writeToFL(std::string totalString, const char* newFile) {
@@ -44,18 +32,18 @@ void writeToFL(std::string totalString, const char* newFile) {
 
 void operateTXTFile() {
 
-    LoginActionSave(rawFileString);
-    LoginActionSave(recordFileString);
+    ActionSave(rawFileString);
+    ActionSave(recordFileString);
 
-    std::vector<Record> newRecords;
+    std::vector<Record> newRecords; // the records will be stored as objecs here in this vector for easy work
 
-    int counter = 0;
+    int counter = 0; // counts the rows readed from the input file
 
-    std::ifstream myFile;
-    myFile.open(rawFile);
+    std::ifstream rawTxtFile;
+    rawTxtFile.open(rawFile);
     std::string line;
 
-    while (getline(myFile, line))
+    while (getline(rawTxtFile, line)) // its easy and better to read  and process with my own txt file 
     {
         counter++;
         if (counter > 2) { // skipping first 2 rows from file
@@ -128,6 +116,7 @@ void operateTXTFile() {
     delete[] recordFile;
     recordFile = nullptr;*/
 
+    return;
 }
 
 #endif 

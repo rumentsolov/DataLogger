@@ -26,7 +26,7 @@ std::string GetDTPath()
 
         buffer = buf + "\\";
 
-        LoginActionSave(buffer);
+        //ActionSave(buffer);
     }
 
     if (buffer != "\\") {

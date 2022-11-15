@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ActionLogger.h"
+#include "GlobalVariables.h"
 
 class Record {
 public:

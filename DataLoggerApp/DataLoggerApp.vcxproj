@@ -132,6 +132,7 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="GetDesktopPath.h" />
+    <ClInclude Include="GlobalVariables.h" />
     <ClInclude Include="Processment.h" />
     <ClInclude Include="Record.h" />
     <ClInclude Include="trend.h" />
