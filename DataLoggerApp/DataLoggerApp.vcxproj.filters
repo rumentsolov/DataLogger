@@ -35,5 +35,11 @@
     <ClInclude Include="Processment.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GetDesktopPath.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionLogger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

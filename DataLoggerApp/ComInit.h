@@ -1,4 +1,5 @@
-#pragma once
+#ifndef COMINI_H
+#define COMINI_H
 
 #include <Windows.h>
 #include <Urlmon.h>   // for URLOpenBlockingStreamW()
@@ -13,3 +14,5 @@ struct ComInit
     ComInit() : hr(::CoInitialize(nullptr)) {}
     ~ComInit() { if (SUCCEEDED(hr)) ::CoUninitialize(); }
 };
+
+#endif 

@@ -1,6 +1,7 @@
 #include "DataLogger.h"
 #include <atlbase.h> 
 #include "trend.h"
+#include "ActionLogger.h"
 
 using namespace System;
 using namespace System::Windows::Forms;

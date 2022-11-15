@@ -6,7 +6,7 @@
 #include <sstream>
 #include <vector>
 #include <string>
-
+#include "ActionLogger.h"
 #include "Record.h"
 #include "ComInit.h"
 #include "Processment.h"

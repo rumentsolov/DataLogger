@@ -1,5 +1,6 @@
 #pragma once
 
+#include "ActionLogger.h"
 
 class Record {
 public:

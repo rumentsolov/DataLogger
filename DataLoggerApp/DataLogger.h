@@ -1,5 +1,8 @@
-#pragma once
+#ifndef DATALOGGER_H
+#define DATALOGGER_H
 
+#include <windows.h>
+#include "ActionLogger.h"
 #include "trend.h"
 
 namespace DataLoggerApp {
@@ -86,7 +89,10 @@ namespace DataLoggerApp {
 	private: System::Void btn1_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		run();
+		MessageBox::Show("Job done!");
 
 	}
 	};
 }
+
+#endif 

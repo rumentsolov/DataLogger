@@ -7,13 +7,29 @@
 #include <sstream>
 #include <vector>
 #include <string> 
+#include <cstring>
 
 #include "Record.h"
 #include "ComInit.h"
+#include "ActionLogger.h"
+#include "GetDesktopPath.h"
+
+std::string path = GetDTPath();
 
 
-const char* rawFile = "C:\\Users\\USER\\Desktop\\rawfile.txt";
-const char* recordFile = "C:\\Users\\USER\\Desktop\\record.txt";
+const char* pathStr = path.c_str();
+const char* rawName = "\\rawfile.txt";
+const char* recordName = "\\record.txt";
+
+char* rawFile = new char[strlen(pathStr) + strlen(rawName) + 1] {'\0'};
+
+char* recordFile = new char[strlen(pathStr) + strlen(recordName) + 1] {'\0'};
+
+
+
+ //char* rawFile = "\\rawfile.txt";
+ //char* recordFile = "\\record.txt";
+
 const char* inputFile = "https://www.rumentsolov.com/gallery/trend.csv";
 
 
@@ -38,7 +54,6 @@ void operateTXTFile() {
     int counter = 0;
 
     std::ifstream myFile;
-    std::ostringstream oss;
     myFile.open(rawFile);
     std::string line;
 
@@ -107,6 +122,14 @@ void operateTXTFile() {
     }
 
     writeToFL(osTr.str(), recordFile);
+
+  
+
+   /* delete[] rawFile;
+    rawFile = nullptr;
+    delete[] recordFile;
+    recordFile = nullptr;*/
+
 }
 
 #endif 
