@@ -124,12 +124,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DataLogger.cpp" />
+    <ClCompile Include="DataCollector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActionLogger.h" />
     <ClInclude Include="ComInit.h" />
-    <ClInclude Include="DataLogger.h">
+    <ClInclude Include="DataCollector.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="GetDesktopPath.h" />
@@ -139,8 +139,8 @@
     <ClInclude Include="trend.h" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DataLogger.resx">
-      <DependentUpon>DataLogger.h</DependentUpon>
+    <EmbeddedResource Include="DataCollector.resx">
+      <DependentUpon>DataCollector.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,4 +1,4 @@
-#include "DataLogger.h"
+#include "DataCollector.h"
 #include <atlbase.h> 
 #include "trend.h"
 #include "ActionLogger.h"
@@ -11,7 +11,7 @@ int main(array<String^>^ arr) {
 
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
-	DataLoggerApp::DataLogger frm;
+	DataCollectorApp::DataCollector frm;
 	Application::Run(% frm);
 	return 0;
 }

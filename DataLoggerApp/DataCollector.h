@@ -1,11 +1,11 @@
-#ifndef DATALOGGER_H
-#define DATALOGGER_H
+#ifndef DataCollector_H
+#define DataCollector_H
 
 #include <windows.h>
 #include "ActionLogger.h"
 #include "trend.h"
 
-namespace DataLoggerApp {
+namespace DataCollectorApp {
 
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -15,12 +15,12 @@ namespace DataLoggerApp {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Summary for DataLogger
+	/// Summary for DataCollector
 	/// </summary>
-	public ref class DataLogger : public System::Windows::Forms::Form
+	public ref class DataCollector : public System::Windows::Forms::Form
 	{
 	public:
-		DataLogger(void)
+		DataCollector(void)
 		{
 			InitializeComponent();
 			//
@@ -32,7 +32,7 @@ namespace DataLoggerApp {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~DataLogger()
+		~DataCollector()
 		{
 			if (components)
 			{
@@ -72,16 +72,16 @@ namespace DataLoggerApp {
 			this->btn1->TabIndex = 0;
 			this->btn1->Text = L"GO";
 			this->btn1->UseVisualStyleBackColor = true;
-			this->btn1->Click += gcnew System::EventHandler(this, &DataLogger::btn1_Click);
+			this->btn1->Click += gcnew System::EventHandler(this, &DataCollector::btn1_Click);
 			// 
-			// DataLogger
+			// DataCollector
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(282, 253);
 			this->Controls->Add(this->btn1);
-			this->Name = L"DataLogger";
-			this->Text = L"DataLogger";
+			this->Name = L"DataCollector";
+			this->Text = L"DataCollector";
 			this->ResumeLayout(false);
 
 		}
