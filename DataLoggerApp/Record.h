@@ -6,14 +6,14 @@
 class Record {
 public:
 
-    int id;                     // id inside the table controller record
+    std::string id;                     // id inside the table controller record
     int controllerId;           // serial number of the record inside the controller
     int year;                   // year record is created
-    int month;                  // month record is created
-    int day;                    // day record is created
-    int hour;                   // hour record is created
-    int minute;                 // minute record is created
-    int second;                 // second record is created
+    std::string month;          // month record is created
+    std::string day;            // day record is created
+    std::string hour;           // hour record is created
+    std::string minute;         // minute record is created
+    std::string second;         // second record is created
 
     double voltageLine12;       // voltage between line 1 and 2
     double voltageLine23;       // voltage between line 2 and 3
@@ -31,9 +31,14 @@ public:
 
     Record();
 
-    Record(int id, int controllerId, int year, int month, int day, int hour, int minute, int second, double voltageLine12, double voltageLine23, double voltageLine31, double currentLine1, double currentLine2, double currentLine3, double combinatedPower, double activePower, double reactivePower, double apparentPower, double calculatedPower) {
+    Record(std::string id, int controllerId, int year, std::string month, std::string day, std::string hour, std::string minute, std::string second, double voltageLine12, double voltageLine23, double voltageLine31, double currentLine1, double currentLine2, double currentLine3, double combinatedPower, double activePower, double reactivePower, double apparentPower, double calculatedPower) {
 
-        this->id = id;
+        if (id.size() == 3)
+            this->id = id;
+        else if (id.size() == 2)
+            this->id = " "+ id;
+        else if (id.size() == 1)
+            this->id = "  " + id;
         this->controllerId = controllerId;
         this->year = year;
         this->month = month;

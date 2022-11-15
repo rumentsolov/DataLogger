@@ -63,14 +63,14 @@ void operateTXTFile() {
             for (int i = 0; i < line.size(); i++) if (line[i] == ',') line[i] = ' ';
             std::stringstream sStr(line);
             std::string dateDtmp, timeDtmp;
-            int id;                     // id inside the table controller record
+            std::string id;                     // id inside the table controller record
             int controllerId;           // serial number of the record inside the controller
             int year;                   // year record is created
-            int month;                  // month record is created
-            int day;                    // day record is created
-            int hour;                   // hour record is created
-            int minute;                 // minute record is created
-            int second;                 // second record is created
+            std::string month;                  // month record is created
+            std::string day;                    // day record is created
+            std::string hour;                   // hour record is created
+            std::string minute;                 // minute record is created
+            std::string second;                 // second record is created
 
             double voltageLine12;       // voltage between line 1 and 2
             double voltageLine23;       // voltage between line 2 and 3
