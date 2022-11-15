@@ -56,6 +56,10 @@ void operateTXTFile() {
     std::string line;
     int startUpCurrent = 0; // this will indicate if the current is the Startup -> every first record after 0.00 in current is startup
 
+    double line1tmp , line2tmp , line3tmp ;
+
+    line1tmp = line2tmp = line3tmp = 15.00;
+
     while (getline(rawTxtFile, line)) // its easy and better to read  and process with my own txt file 
     {
         counter++;
@@ -104,77 +108,77 @@ void operateTXTFile() {
             sStr >> voltageLine12 >> voltageLine23 >> voltageLine31 >> currentLine1 >> currentLine2 >> currentLine3 >> combinatedPower >> activePower >> reactivePower >> apparentPower;
             //sStr >> calculatedPowtmp;
 
-            
-            if (currentLine1 != 0.00 && currentLine2 != 0.00 && currentLine3 != 0.00 && startUpCurrent >=1)
-            {
-                Record curRecord(id, controllerId, year, month, day, hour, minute, second, voltageLine12, voltageLine23, voltageLine31, currentLine1, currentLine2, currentLine3, combinatedPower, activePower, reactivePower, apparentPower, calculatedPower);
-                startUpCurrent++;
-                newRecords.push_back(curRecord);
+            int i = newRecords.size();
+
+            if (i == 1) {
+                line1tmp = currentLine1;
+                line2tmp = currentLine2;
+                line3tmp = currentLine3;
             }
-            else if(currentLine1 == 0.00 && currentLine2 == 0.00 && currentLine3 == 0.00)
-                startUpCurrent = 0;
-            else if (currentLine1 != 0.00 && currentLine2 != 0.00 && currentLine3 != 0.00 && startUpCurrent == 0)
-                startUpCurrent++;
+
+            if (
+                line1tmp * startupCurrentFactor > currentLine1 &&
+                line2tmp * startupCurrentFactor > currentLine2 &&
+                line3tmp * startupCurrentFactor > currentLine3 &&
+
+                line1tmp / startupCurrentFactor < currentLine1 &&
+                line2tmp / startupCurrentFactor < currentLine2 &&
+                line3tmp / startupCurrentFactor < currentLine3
+                )
+            {
+
+                if (currentLine1 != 0.00 && currentLine2 != 0.00 && currentLine3 != 0.00 && startUpCurrent >= 1)
+                {
+                    Record curRecord(id, controllerId, year, month, day, hour, minute, second, voltageLine12, voltageLine23, voltageLine31, currentLine1, currentLine2, currentLine3, combinatedPower, activePower, reactivePower, apparentPower, calculatedPower);
+                    startUpCurrent++;
+                    newRecords.push_back(curRecord);
+                }
+                else if (currentLine1 == 0.00 && currentLine2 == 0.00 && currentLine3 == 0.00)
+                    startUpCurrent = 0;
+                else if (currentLine1 != 0.00 && currentLine2 != 0.00 && currentLine3 != 0.00 && startUpCurrent == 0)
+                    startUpCurrent++;
+
+
+                voltageLine12AVG += voltageLine12;
+                voltageLine23AVG += voltageLine23;
+                voltageLine31AVG += voltageLine31;
+
+                currentLine1AVG += currentLine1;
+                currentLine2AVG += currentLine2;
+                currentLine3AVG += currentLine3;
+
+                line1tmp = currentLine1;
+                line2tmp = currentLine2;
+                line3tmp = currentLine3;
+
+
+                combinatedPowerAVG += combinatedPower;
+                activePowerAVG += activePower;
+                reactivePowerAVG += reactivePower;
+                apparentPowerAVG += apparentPower;
+            }
+            
+                
         }
     }
 
-    int correctRecords = 0;
 
-    double line1tmp = newRecords[0].currentLine1, line2tmp = newRecords[0].currentLine2, line3tmp = newRecords[0].currentLine3;
     std::ostringstream osTr;
     osTr << std::fixed;
     osTr << std::setprecision(2);
  
         // FINDS THE AVARAGE VALUES FROM OBJECTS
 
-    for (int i = 0; i < newRecords.size(); i++) {
-
-        if (
-            line1tmp * startupCurrentFactor > newRecords[i].currentLine1 &&
-            line2tmp * startupCurrentFactor > newRecords[i].currentLine2 &&
-            line3tmp * startupCurrentFactor > newRecords[i].currentLine3 &&
-
-            line1tmp / startupCurrentFactor < newRecords[i].currentLine1 &&
-            line2tmp / startupCurrentFactor < newRecords[i].currentLine2 &&
-            line3tmp / startupCurrentFactor < newRecords[i].currentLine3
-            ) 
-        {
-            
-            voltageLine12AVG += newRecords[i].voltageLine12;
-            voltageLine23AVG += newRecords[i].voltageLine23;
-            voltageLine31AVG += newRecords[i].voltageLine31;
-
-            currentLine1AVG += newRecords[i].currentLine1;
-            currentLine2AVG += newRecords[i].currentLine2;
-            currentLine3AVG += newRecords[i].currentLine3;
-
-            line1tmp = newRecords[i].currentLine1;
-            line2tmp = newRecords[i].currentLine2; 
-            line3tmp = newRecords[i].currentLine3;
-
-
-            combinatedPowerAVG += newRecords[i].combinatedPower;
-            activePowerAVG += newRecords[i].activePower;
-            reactivePowerAVG += newRecords[i].reactivePower;
-            apparentPowerAVG += newRecords[i].apparentPower;
-
-            correctRecords++;
-        }
-
-        
-    }
-
-
-    voltageLine12AVG /= correctRecords;
-    voltageLine23AVG /= correctRecords;
-    voltageLine31AVG /= correctRecords;
-    currentLine1AVG /= correctRecords;
-    currentLine2AVG /= correctRecords;
-    currentLine3AVG /= correctRecords;
-    combinatedPowerAVG /= correctRecords;
-    activePowerAVG /= correctRecords;
-    reactivePowerAVG /= correctRecords;
-    apparentPowerAVG /= correctRecords;
+    voltageLine12AVG /= newRecords.size();
+    voltageLine23AVG /= newRecords.size();
+    voltageLine31AVG /= newRecords.size();
+    currentLine1AVG /= newRecords.size();
+    currentLine2AVG /= newRecords.size();
+    currentLine3AVG /= newRecords.size();
+    combinatedPowerAVG /= newRecords.size();
+    activePowerAVG /= newRecords.size();
+    reactivePowerAVG /= newRecords.size();
+    apparentPowerAVG /= newRecords.size() ;
 
   
 
