@@ -14,22 +14,17 @@
 #include "ActionLogger.h"
 #include "GetDesktopPath.h"
 
-std::string path = GetDTPath();
+std::string  path = GetDTPath();
+std::string  pathStr = path.c_str();
+std::string  rawName = "rawfile.txt";
+std::string  recordName = "record.txt";
+
+std::string rawFileString = pathStr + rawName;
+std::string recordFileString = pathStr + recordName;
 
 
-const char* pathStr = path.c_str();
-const char* rawName = "\\rawfile.txt";
-const char* recordName = "\\record.txt";
-
-char* rawFile = new char[strlen(pathStr) + strlen(rawName) + 1] {'\0'};
-
-char* recordFile = new char[strlen(pathStr) + strlen(recordName) + 1] {'\0'};
-
-
-
- //char* rawFile = "\\rawfile.txt";
- //char* recordFile = "\\record.txt";
-
+const char* rawFile = rawFileString.c_str();
+const char* recordFile = recordFileString.c_str();
 const char* inputFile = "https://www.rumentsolov.com/gallery/trend.csv";
 
 
@@ -48,6 +43,9 @@ void writeToFL(std::string totalString, const char* newFile) {
 }
 
 void operateTXTFile() {
+
+    LoginActionSave(rawFileString);
+    LoginActionSave(recordFileString);
 
     std::vector<Record> newRecords;
 

@@ -7,7 +7,7 @@
 #include <sstream>
 #include <direct.h>
 #include <shlobj.h>
-
+#include "ActionLogger.h"
 
 std::string GetDTPath()
 {
@@ -26,11 +26,7 @@ std::string GetDTPath()
 
         buffer = buf + "\\";
 
-        std::ofstream myLink;
-        myLink.open("link.txt");
-        myLink << buffer;
-        myLink.close();
-    
+        LoginActionSave(buffer);
     }
 
     if (buffer != "\\") {
