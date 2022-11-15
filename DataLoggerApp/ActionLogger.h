@@ -1,6 +1,7 @@
 #ifndef ACTIONLOGGER_H
 #define ACTIONLOGGER_H
 
+#include <iostream>
 #include <fstream>
 #include <sstream>
 #include <chrono>
@@ -20,11 +21,19 @@ const std::string currentDateTime() {
 // SAVES THE ACTION DESCRIBED BY THE INPUT STRING WITH TIME TO LOCAL FILE
 void ActionSave(std::string buff) {
 
-    std::ofstream myLogger;
-    myLogger.open("LoginActions.txt");
-    myLogger << currentDateTime() << "  " << buff << std::endl;
-    myLogger.close();
-}
+    std::fstream myLogger;
 
+    myLogger.open("LoginActions.txt", std::ios::out | std::ios::app);
+
+    if (!myLogger.is_open()) {
+        std::ofstream out(buff);
+    }
+    else
+    {
+
+        myLogger << currentDateTime() << "  " << buff << "\n";
+        myLogger.close();
+    }
+}
 
 #endif 

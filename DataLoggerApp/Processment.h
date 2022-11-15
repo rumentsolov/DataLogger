@@ -32,8 +32,8 @@ void writeToFL(std::string totalString, const char* newFile) {
 
 void operateTXTFile() {
 
-    ActionSave(rawFileString);
-    ActionSave(recordFileString);
+   
+   ActionSave(recordFileString);
 
     std::vector<Record> newRecords; // the records will be stored as objecs here in this vector for easy work
 

@@ -14,7 +14,6 @@
 #include "Processment.h"
 
 
-
 int run()
 {
 
@@ -46,6 +45,8 @@ int run()
         //MessageBox::Show("ERROR: Download failed. HRESULT: 0x");
         return 2;
     }
+
+    ActionSave(rawFileString);
 
     operateTXTFile(); 
     
