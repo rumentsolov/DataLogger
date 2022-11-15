@@ -54,6 +54,7 @@ void operateTXTFile() {
     std::ifstream rawTxtFile;
     rawTxtFile.open(rawFile);
     std::string line;
+    int startUpCurrent = 0; // this will indicate if the current is the Startup -> every first record after 0.00 in current is startup
 
     while (getline(rawTxtFile, line)) // its easy and better to read  and process with my own txt file 
     {
@@ -81,7 +82,7 @@ void operateTXTFile() {
             double combinatedPower;     // combinated power factor for line 1+2+3
             double activePower;         // combinated active power for line 1+2+3
             double reactivePower;       // combinated reactive power for line 1+2+3
-            double apparentPower;       // combinated apparent power for line 1+2+3
+            double apparentPower;       // combinated apparent power for line 1+2+3 , WHEN IT IS "-" POSSITION DOWN
             double calculatedPower = 0; // combinated calculated power for line 1+2+3
 
             // skipping id & controllerId
@@ -103,19 +104,23 @@ void operateTXTFile() {
             sStr >> voltageLine12 >> voltageLine23 >> voltageLine31 >> currentLine1 >> currentLine2 >> currentLine3 >> combinatedPower >> activePower >> reactivePower >> apparentPower;
             //sStr >> calculatedPowtmp;
 
-
-            if (currentLine1 != 0.00 & currentLine2 != 0.00 & currentLine3 != 0.00)
+            
+            if (currentLine1 != 0.00 && currentLine2 != 0.00 && currentLine3 != 0.00 && startUpCurrent >=1)
             {
                 Record curRecord(id, controllerId, year, month, day, hour, minute, second, voltageLine12, voltageLine23, voltageLine31, currentLine1, currentLine2, currentLine3, combinatedPower, activePower, reactivePower, apparentPower, calculatedPower);
-
+                startUpCurrent++;
                 newRecords.push_back(curRecord);
             }
+            else if(currentLine1 == 0.00 && currentLine2 == 0.00 && currentLine3 == 0.00)
+                startUpCurrent = 0;
+            else if (currentLine1 != 0.00 && currentLine2 != 0.00 && currentLine3 != 0.00 && startUpCurrent == 0)
+                startUpCurrent++;
         }
     }
 
     int correctRecords = 0;
 
-    double line1tmp = 9999, line2tmp = 9999, line3tmp = 9999;
+    double line1tmp = newRecords[0].currentLine1, line2tmp = newRecords[0].currentLine2, line3tmp = newRecords[0].currentLine3;
     std::ostringstream osTr;
     osTr << std::fixed;
     osTr << std::setprecision(2);
@@ -127,7 +132,11 @@ void operateTXTFile() {
         if (
             line1tmp * startupCurrentFactor > newRecords[i].currentLine1 &&
             line2tmp * startupCurrentFactor > newRecords[i].currentLine2 &&
-            line3tmp * startupCurrentFactor > newRecords[i].currentLine3
+            line3tmp * startupCurrentFactor > newRecords[i].currentLine3 &&
+
+            line1tmp / startupCurrentFactor < newRecords[i].currentLine1 &&
+            line2tmp / startupCurrentFactor < newRecords[i].currentLine2 &&
+            line3tmp / startupCurrentFactor < newRecords[i].currentLine3
             ) 
         {
             
@@ -140,7 +149,7 @@ void operateTXTFile() {
             currentLine3AVG += newRecords[i].currentLine3;
 
             line1tmp = newRecords[i].currentLine1;
-            line2tmp = newRecords[i].currentLine2;
+            line2tmp = newRecords[i].currentLine2; 
             line3tmp = newRecords[i].currentLine3;
 
 
