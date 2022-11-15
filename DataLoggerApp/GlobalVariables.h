@@ -21,4 +21,6 @@ const char* rawFile = rawFileString.c_str();
 const char* recordFile = recordFileString.c_str();
 const char* inputFile = "https://www.rumentsolov.com/gallery/trend.csv";
 
+const int startupCurrentFactor = 2;
+
 #endif #pragma once

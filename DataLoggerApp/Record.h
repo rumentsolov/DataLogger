@@ -27,6 +27,8 @@ public:
     double apparentPower;       // combinated apparent power for line 1+2+3
     double calculatedPower;     // combinated calculated power for line 1+2+3
 
+
+
     Record();
 
     Record(int id, int controllerId, int year, int month, int day, int hour, int minute, int second, double voltageLine12, double voltageLine23, double voltageLine31, double currentLine1, double currentLine2, double currentLine3, double combinatedPower, double activePower, double reactivePower, double apparentPower, double calculatedPower) {
@@ -51,9 +53,12 @@ public:
         this->reactivePower = reactivePower;
         this->apparentPower = apparentPower;
         this->calculatedPower = calculatedPower;
+
     }
 
-    void sendToStream(std::ostringstream& oStr) {
+    void valuesSendToStream(std::ostringstream& oStr) 
+    
+    {
         oStr <<
             this->id << ' ' <<
             this->controllerId << ' ' <<
@@ -79,6 +84,6 @@ public:
             this->reactivePower << 'W' <<
             // calculatedPow[i] << 'W' << ' ';
             std::endl;
-
     }
+
 };

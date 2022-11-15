@@ -15,6 +15,18 @@
 #include "GlobalVariables.h"
 
 
+double voltageLine12AVG;       // Average voltage between line 1 and 2
+double voltageLine23AVG;       // Average voltage between line 2 and 3
+double voltageLine31AVG;       // Average voltage between line 3 and 1
+double currentLine1AVG;        // Average current in line 1
+double currentLine2AVG;        // Average current in line 2
+double currentLine3AVG;        // Average current in line 3
+double combinatedPowerAVG;     // Average combinated power factor for line 1+2+3
+double activePowerAVG;         // Average combinated active power for line 1+2+3
+double reactivePowerAVG;       // Average combinated reactive power for line 1+2+3
+double apparentPowerAVG;       // Average combinated apparent power for line 1+2+3
+double calculatedPowerAVG;     // Average combinated calculated power for line 1+2+3
+
 
 void writeToFL(std::string totalString, const char* newFile) {
     std::fstream file;
@@ -101,15 +113,90 @@ void operateTXTFile() {
         }
     }
 
+    int correctRecords = 0;
+
+    double line1tmp = 9999, line2tmp = 9999, line3tmp = 9999;
     std::ostringstream osTr;
+    osTr << std::fixed;
+    osTr << std::setprecision(2);
+ 
+        // FINDS THE AVARAGE VALUES FROM OBJECTS
 
     for (int i = 0; i < newRecords.size(); i++) {
-        newRecords[i].sendToStream(osTr);
+
+        if (
+            line1tmp * startupCurrentFactor > newRecords[i].currentLine1 &&
+            line2tmp * startupCurrentFactor > newRecords[i].currentLine2 &&
+            line3tmp * startupCurrentFactor > newRecords[i].currentLine3
+            ) 
+        {
+            
+            voltageLine12AVG += newRecords[i].voltageLine12;
+            voltageLine23AVG += newRecords[i].voltageLine23;
+            voltageLine31AVG += newRecords[i].voltageLine31;
+
+            currentLine1AVG += newRecords[i].currentLine1;
+            currentLine2AVG += newRecords[i].currentLine2;
+            currentLine3AVG += newRecords[i].currentLine3;
+
+            line1tmp = newRecords[i].currentLine1;
+            line2tmp = newRecords[i].currentLine2;
+            line3tmp = newRecords[i].currentLine3;
+
+
+            combinatedPowerAVG += newRecords[i].combinatedPower;
+            activePowerAVG += newRecords[i].activePower;
+            reactivePowerAVG += newRecords[i].reactivePower;
+            apparentPowerAVG += newRecords[i].apparentPower;
+
+            correctRecords++;
+        }
+
+        
     }
 
-    writeToFL(osTr.str(), recordFile);
+
+    voltageLine12AVG /= correctRecords;
+    voltageLine23AVG /= correctRecords;
+    voltageLine31AVG /= correctRecords;
+    currentLine1AVG /= correctRecords;
+    currentLine2AVG /= correctRecords;
+    currentLine3AVG /= correctRecords;
+    combinatedPowerAVG /= correctRecords;
+    activePowerAVG /= correctRecords;
+    reactivePowerAVG /= correctRecords;
+    apparentPowerAVG /= correctRecords;
 
   
+
+    osTr <<
+        "AVG Voltage 1-2 :" << 
+        voltageLine12AVG << 'V'<< std::endl <<
+        "AVG Voltage 2-3 :" << 
+        voltageLine23AVG << 'V'<< std::endl <<
+        "AVG Voltage 3-1 :" << 
+        voltageLine31AVG << 'V'<< std::endl <<
+        "AVG Current Line 1 :" << 
+        currentLine1AVG << 'A' << std::endl <<
+        "AVG Current Line 2 :" <<
+        currentLine2AVG << 'A' << std::endl <<
+        "AVG Current Line 3 :" << 
+        currentLine3AVG << 'A' << std::endl <<
+        "AVG Combinated Power :" <<
+        combinatedPowerAVG << 'W' << std::endl <<
+        "AVG Active Power :" <<
+        activePowerAVG << 'W' << std::endl <<
+        "AVG Apparent Power :" <<
+        apparentPowerAVG << 'W' << std::endl << std::endl;
+
+
+    for (int i = 0; i < newRecords.size(); i++) {
+        newRecords[i].valuesSendToStream(osTr);
+    }
+
+
+
+    writeToFL(osTr.str(), recordFile);
 
    /* delete[] rawFile;
     rawFile = nullptr;
