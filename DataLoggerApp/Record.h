@@ -22,10 +22,10 @@ public:
     double currentLine2;        // current in line 2
     double currentLine3;        // current in line 3
     double combinatedPower;     // combinated power factor for line 1+2+3
-    double activePower;         // combinated active power for line 1+2+3
-    double reactivePower;       // combinated reactive power for line 1+2+3
-    double apparentPower;       // combinated apparent power for line 1+2+3
-    double calculatedPower;     // combinated calculated power for line 1+2+3
+    double activePower;         // active power for line 1+2+3
+    double reactivePower;       // reactive power for line 1+2+3
+    double apparentPower;       // apparent power for line 1+2+3
+    double calculatedPower;     // calculated power for line 1+2+3
 
 
 

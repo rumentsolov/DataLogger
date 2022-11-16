@@ -172,9 +172,11 @@ void operateTXTFile() {
     voltageLine12AVG /= newRecords.size();
     voltageLine23AVG /= newRecords.size();
     voltageLine31AVG /= newRecords.size();
+
     currentLine1AVG /= newRecords.size();
     currentLine2AVG /= newRecords.size();
     currentLine3AVG /= newRecords.size();
+
     combinatedPowerAVG /= newRecords.size();
     activePowerAVG /= newRecords.size();
     reactivePowerAVG /= newRecords.size();

@@ -92,3 +92,5 @@
 2022-11-15.16:40:22  C:\Users\USER\Desktop\record.txt
 2022-11-15.16:40:56  C:\Users\USER\Desktop\rawfile.txt
 2022-11-15.16:40:56  C:\Users\USER\Desktop\record.txt
+2022-11-16.09:04:32  C:\Users\USER\Desktop\rawfile.txt
+2022-11-16.09:04:32  C:\Users\USER\Desktop\record.txt
