@@ -10,7 +10,7 @@
 #include <cstring>
 
 #include "Record.h"
-#include "Record.cpp"
+
 #include "ComInit.h"
 #include "ActionLogger.h"
 #include "GlobalVariables.h"
