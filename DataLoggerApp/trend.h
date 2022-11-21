@@ -10,6 +10,7 @@
 #include "GlobalVariables.h"
 #include "ActionLogger.h"
 #include "Record.h"
+#include "Record.cpp"
 #include "ComInit.h"
 #include "Processment.h"
 

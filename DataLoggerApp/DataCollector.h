@@ -14,9 +14,8 @@ namespace DataCollectorApp {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
-	/// <summary>
-	/// Summary for DataCollector
-	/// </summary>
+	/// DataCollector class holds all objects showed on the screen
+
 	public ref class DataCollector : public System::Windows::Forms::Form
 	{
 	public:
@@ -78,10 +77,7 @@ namespace DataCollectorApp {
 		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
+		/// Initialization of components in DataCollecotr Do not modify !!!
 		void InitializeComponent(void)
 		{
 			this->btnSTOP = (gcnew System::Windows::Forms::Button());

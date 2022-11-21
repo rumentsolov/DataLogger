@@ -8,3 +8,17 @@
 2022-11-16.10:36:00  C:\Users\USER\Desktop\record.txt
 2022-11-16.10:40:42  C:\Users\USER\Desktop\rawfile.txt
 2022-11-16.10:40:42  C:\Users\USER\Desktop\record.txt
+2022-11-16.11:13:00  C:\Users\USER\Desktop\rawfile.txt
+2022-11-16.11:13:00  C:\Users\USER\Desktop\record.txt
+2022-11-16.15:32:15  C:\Users\USER\Desktop\rawfile.txt
+2022-11-16.15:32:15  C:\Users\USER\Desktop\record.txt
+2022-11-17.13:10:39  C:\Users\USER\Desktop\rawfile.txt
+2022-11-17.13:10:39  C:\Users\USER\Desktop\record.txt
+2022-11-17.13:24:27  C:\Users\USER\Desktop\rawfile.txt
+2022-11-17.13:24:27  C:\Users\USER\Desktop\record.txt
+2022-11-21.10:51:19  C:\Users\USER\Desktop\rawfile.txt
+2022-11-21.10:51:19  C:\Users\USER\Desktop\record.txt
+2022-11-21.15:36:17  C:\Users\USER\Desktop\rawfile.txt
+2022-11-21.15:36:17  C:\Users\USER\Desktop\record.txt
+2022-11-21.15:43:48  C:\Users\USER\Desktop\rawfile.txt
+2022-11-21.15:43:48  C:\Users\USER\Desktop\record.txt

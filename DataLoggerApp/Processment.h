@@ -10,6 +10,7 @@
 #include <cstring>
 
 #include "Record.h"
+#include "Record.cpp"
 #include "ComInit.h"
 #include "ActionLogger.h"
 #include "GlobalVariables.h"
@@ -42,7 +43,7 @@ void writeToFL(std::string totalString, const char* newFile) {
     }
 }
 
-void operateTXTFile() {
+void operateTXTFile() { // Since sometimes provides me errors when working with csv file I anyway have to create raw text file by requirements and I use that file to analyze the data
 
    
    ActionSave(recordFileString);
@@ -66,11 +67,12 @@ void operateTXTFile() {
         if (counter > 2) { // skipping first 2 rows from file
 
             for (int i = 0; i < line.size(); i++) if (line[i] == ',') line[i] = ' ';
+
             std::stringstream sStr(line);
             std::string dateDtmp, timeDtmp;
             std::string id;                     // id inside the table controller record
-            int controllerId;           // serial number of the record inside the controller
-            int year;                   // year record is created
+            int controllerId;                   // serial number of the record inside the controller
+            int year;                           // year record is created
             std::string month;                  // month record is created
             std::string day;                    // day record is created
             std::string hour;                   // hour record is created
@@ -98,6 +100,7 @@ void operateTXTFile() {
             sStrDate >> day >> month >> year;
 
             sStr >> timeDtmp;
+
             for (int i = 0; i < timeDtmp.size(); i++) if (timeDtmp[i] == ':') timeDtmp[i] = ' ';
             std::stringstream sStrTime(timeDtmp);
 
@@ -129,7 +132,7 @@ void operateTXTFile() {
 
                 if (currentLine1 != 0.00 && currentLine2 != 0.00 && currentLine3 != 0.00 && startUpCurrent >= 1)
                 {
-                    Record curRecord(id, controllerId, year, month, day, hour, minute, second, voltageLine12, voltageLine23, voltageLine31, currentLine1, currentLine2, currentLine3, combinatedPower, activePower, reactivePower, apparentPower, calculatedPower);
+                    Record curRecord(id, controllerId, year, month, day, hour, minute, second, voltageLine12, voltageLine23, voltageLine31, currentLine1, currentLine2, currentLine3, combinatedPower, activePower, reactivePower, apparentPower, 0);
                     startUpCurrent++;
                     newRecords.push_back(curRecord);
                 }
