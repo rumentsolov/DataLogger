@@ -67,7 +67,26 @@ namespace DataCollectorApp {
 
 	public: System::Windows::Forms::Label^ labAApp;
 	public: System::Windows::Forms::Label^ labAAppvar;
-	
+	public: System::Windows::Forms::Label^ labSN;
+	private: System::Windows::Forms::TextBox^ textBox1;
+	public: System::Windows::Forms::Label^ labHmodel;
+	public: System::Windows::Forms::Label^ labHmodel2;
+	public: System::Windows::Forms::Label^ labHProdNum;
+	public: System::Windows::Forms::Label^ labHProdNum2;
+	public: System::Windows::Forms::Label^ liftMmodel2;
+	public: System::Windows::Forms::Label^ liftMmodel;
+	public: System::Windows::Forms::Label^ liftMLogo;
+
+
+	private:
+	public:
+
+	private:
+
+
+
+
+
 	
 
 	private:
@@ -103,30 +122,41 @@ namespace DataCollectorApp {
 			this->labAReactvar = (gcnew System::Windows::Forms::Label());
 			this->labAApp = (gcnew System::Windows::Forms::Label());
 			this->labAAppvar = (gcnew System::Windows::Forms::Label());
+			this->labSN = (gcnew System::Windows::Forms::Label());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->labHmodel = (gcnew System::Windows::Forms::Label());
+			this->labHmodel2 = (gcnew System::Windows::Forms::Label());
+			this->labHProdNum = (gcnew System::Windows::Forms::Label());
+			this->labHProdNum2 = (gcnew System::Windows::Forms::Label());
+			this->liftMmodel2 = (gcnew System::Windows::Forms::Label());
+			this->liftMmodel = (gcnew System::Windows::Forms::Label());
+			this->liftMLogo = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// btnSTOP
 			// 
+			this->btnSTOP->BackColor = System::Drawing::Color::Red;
 			this->btnSTOP->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnSTOP->Location = System::Drawing::Point(154, 12);
+			this->btnSTOP->Location = System::Drawing::Point(155, 96);
 			this->btnSTOP->Name = L"btnSTOP";
 			this->btnSTOP->Size = System::Drawing::Size(139, 71);
 			this->btnSTOP->TabIndex = 0;
-			this->btnSTOP->Text = L"STOP RECORD";
-			this->btnSTOP->UseVisualStyleBackColor = true;
+			this->btnSTOP->Text = L"STOP TEST";
+			this->btnSTOP->UseVisualStyleBackColor = false;
 			this->btnSTOP->Click += gcnew System::EventHandler(this, &DataCollector::btnSTOP_Click);
 			// 
 			// btnSTART
 			// 
+			this->btnSTART->BackColor = System::Drawing::Color::Lime;
 			this->btnSTART->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnSTART->Location = System::Drawing::Point(9, 9);
+			this->btnSTART->Location = System::Drawing::Point(10, 95);
 			this->btnSTART->Name = L"btnSTART";
 			this->btnSTART->Size = System::Drawing::Size(139, 71);
 			this->btnSTART->TabIndex = 1;
-			this->btnSTART->Text = L"START RECORD";
-			this->btnSTART->UseVisualStyleBackColor = true;
+			this->btnSTART->Text = L"START TEST";
+			this->btnSTART->UseVisualStyleBackColor = false;
 			// 
 			// labAV
 			// 
@@ -359,11 +389,119 @@ namespace DataCollectorApp {
 			this->labAAppvar->TabIndex = 22;
 			this->labAAppvar->Text = L"-";
 			// 
+			// labSN
+			// 
+			this->labSN->AutoSize = true;
+			this->labSN->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->labSN->Location = System::Drawing::Point(12, 12);
+			this->labSN->Name = L"labSN";
+			this->labSN->Size = System::Drawing::Size(153, 25);
+			this->labSN->TabIndex = 23;
+			this->labSN->Text = L"HOIST Serial ¹";
+			// 
+			// textBox1
+			// 
+			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12));
+			this->textBox1->Location = System::Drawing::Point(9, 46);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(259, 30);
+			this->textBox1->TabIndex = 24;
+			// 
+			// labHmodel
+			// 
+			this->labHmodel->AutoSize = true;
+			this->labHmodel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->labHmodel->Location = System::Drawing::Point(12, 186);
+			this->labHmodel->Name = L"labHmodel";
+			this->labHmodel->Size = System::Drawing::Size(85, 25);
+			this->labHmodel->TabIndex = 25;
+			this->labHmodel->Text = L"HOIST :";
+			// 
+			// labHmodel2
+			// 
+			this->labHmodel2->AutoSize = true;
+			this->labHmodel2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->labHmodel2->Location = System::Drawing::Point(12, 217);
+			this->labHmodel2->Name = L"labHmodel2";
+			this->labHmodel2->Size = System::Drawing::Size(19, 25);
+			this->labHmodel2->TabIndex = 26;
+			this->labHmodel2->Text = L"-";
+			// 
+			// labHProdNum
+			// 
+			this->labHProdNum->AutoEllipsis = true;
+			this->labHProdNum->AutoSize = true;
+			this->labHProdNum->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->labHProdNum->Location = System::Drawing::Point(12, 265);
+			this->labHProdNum->Name = L"labHProdNum";
+			this->labHProdNum->Size = System::Drawing::Size(245, 31);
+			this->labHProdNum->TabIndex = 27;
+			this->labHProdNum->Text = L"HOIST Production ¹";
+			// 
+			// labHProdNum2
+			// 
+			this->labHProdNum2->AutoSize = true;
+			this->labHProdNum2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->labHProdNum2->Location = System::Drawing::Point(12, 306);
+			this->labHProdNum2->Name = L"labHProdNum2";
+			this->labHProdNum2->Size = System::Drawing::Size(19, 25);
+			this->labHProdNum2->TabIndex = 28;
+			this->labHProdNum2->Text = L"-";
+			// 
+			// liftMmodel2
+			// 
+			this->liftMmodel2->AutoSize = true;
+			this->liftMmodel2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->liftMmodel2->Location = System::Drawing::Point(12, 465);
+			this->liftMmodel2->Name = L"liftMmodel2";
+			this->liftMmodel2->Size = System::Drawing::Size(19, 25);
+			this->liftMmodel2->TabIndex = 30;
+			this->liftMmodel2->Text = L"-";
+			// 
+			// liftMmodel
+			// 
+			this->liftMmodel->AutoEllipsis = true;
+			this->liftMmodel->AutoSize = true;
+			this->liftMmodel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->liftMmodel->Location = System::Drawing::Point(12, 424);
+			this->liftMmodel->Name = L"liftMmodel";
+			this->liftMmodel->Size = System::Drawing::Size(233, 31);
+			this->liftMmodel->TabIndex = 29;
+			this->liftMmodel->Text = L"Lifting motor model :";
+			// 
+			// liftMLogo
+			// 
+			this->liftMLogo->AutoEllipsis = true;
+			this->liftMLogo->AutoSize = true;
+			this->liftMLogo->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->liftMLogo->Location = System::Drawing::Point(12, 390);
+			this->liftMLogo->Name = L"liftMLogo";
+			this->liftMLogo->Size = System::Drawing::Size(209, 31);
+			this->liftMLogo->TabIndex = 31;
+			this->liftMLogo->Text = L"LIFTING MOTOR";
+			// 
 			// DataCollector
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(757, 471);
+			this->ClientSize = System::Drawing::Size(716, 600);
+			this->Controls->Add(this->liftMLogo);
+			this->Controls->Add(this->liftMmodel2);
+			this->Controls->Add(this->liftMmodel);
+			this->Controls->Add(this->labHProdNum2);
+			this->Controls->Add(this->labHProdNum);
+			this->Controls->Add(this->labHmodel2);
+			this->Controls->Add(this->labHmodel);
+			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->labSN);
 			this->Controls->Add(this->labAAppvar);
 			this->Controls->Add(this->labAReactvar);
 			this->Controls->Add(this->labAActvar);

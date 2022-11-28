@@ -125,7 +125,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DataCollector.cpp" />
-    <ClCompile Include="Record.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActionLogger.h" />
