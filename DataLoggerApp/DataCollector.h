@@ -73,9 +73,14 @@ namespace DataCollectorApp {
 	public: System::Windows::Forms::Label^ labHmodel2;
 	public: System::Windows::Forms::Label^ labHProdNum;
 	public: System::Windows::Forms::Label^ labHProdNum2;
-	public: System::Windows::Forms::Label^ liftMmodel2;
+	public: System::Windows::Forms::Label^ liftMotSL;
+
 	public: System::Windows::Forms::Label^ liftMmodel;
 	public: System::Windows::Forms::Label^ liftMLogo;
+	public: System::Windows::Forms::Label^ crossTMotLogo;
+	public: System::Windows::Forms::Label^ crossTMotSL;
+
+	public: System::Windows::Forms::Label^ crossTMotModel;
 
 
 	private:
@@ -128,9 +133,12 @@ namespace DataCollectorApp {
 			this->labHmodel2 = (gcnew System::Windows::Forms::Label());
 			this->labHProdNum = (gcnew System::Windows::Forms::Label());
 			this->labHProdNum2 = (gcnew System::Windows::Forms::Label());
-			this->liftMmodel2 = (gcnew System::Windows::Forms::Label());
+			this->liftMotSL = (gcnew System::Windows::Forms::Label());
 			this->liftMmodel = (gcnew System::Windows::Forms::Label());
 			this->liftMLogo = (gcnew System::Windows::Forms::Label());
+			this->crossTMotLogo = (gcnew System::Windows::Forms::Label());
+			this->crossTMotSL = (gcnew System::Windows::Forms::Label());
+			this->crossTMotModel = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// btnSTOP
@@ -438,7 +446,7 @@ namespace DataCollectorApp {
 				static_cast<System::Byte>(204)));
 			this->labHProdNum->Location = System::Drawing::Point(12, 265);
 			this->labHProdNum->Name = L"labHProdNum";
-			this->labHProdNum->Size = System::Drawing::Size(245, 31);
+			this->labHProdNum->Size = System::Drawing::Size(196, 25);
 			this->labHProdNum->TabIndex = 27;
 			this->labHProdNum->Text = L"HOIST Production ¹";
 			// 
@@ -453,16 +461,16 @@ namespace DataCollectorApp {
 			this->labHProdNum2->TabIndex = 28;
 			this->labHProdNum2->Text = L"-";
 			// 
-			// liftMmodel2
+			// liftMotSL
 			// 
-			this->liftMmodel2->AutoSize = true;
-			this->liftMmodel2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->liftMotSL->AutoSize = true;
+			this->liftMotSL->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->liftMmodel2->Location = System::Drawing::Point(12, 465);
-			this->liftMmodel2->Name = L"liftMmodel2";
-			this->liftMmodel2->Size = System::Drawing::Size(19, 25);
-			this->liftMmodel2->TabIndex = 30;
-			this->liftMmodel2->Text = L"-";
+			this->liftMotSL->Location = System::Drawing::Point(12, 465);
+			this->liftMotSL->Name = L"liftMotSL";
+			this->liftMotSL->Size = System::Drawing::Size(19, 25);
+			this->liftMotSL->TabIndex = 30;
+			this->liftMotSL->Text = L"-";
 			// 
 			// liftMmodel
 			// 
@@ -472,9 +480,9 @@ namespace DataCollectorApp {
 				static_cast<System::Byte>(204)));
 			this->liftMmodel->Location = System::Drawing::Point(12, 424);
 			this->liftMmodel->Name = L"liftMmodel";
-			this->liftMmodel->Size = System::Drawing::Size(233, 31);
+			this->liftMmodel->Size = System::Drawing::Size(219, 31);
 			this->liftMmodel->TabIndex = 29;
-			this->liftMmodel->Text = L"Lifting motor model :";
+			this->liftMmodel->Text = L"Lifting motor model";
 			// 
 			// liftMLogo
 			// 
@@ -484,17 +492,55 @@ namespace DataCollectorApp {
 				static_cast<System::Byte>(204)));
 			this->liftMLogo->Location = System::Drawing::Point(12, 390);
 			this->liftMLogo->Name = L"liftMLogo";
-			this->liftMLogo->Size = System::Drawing::Size(209, 31);
+			this->liftMLogo->Size = System::Drawing::Size(167, 25);
 			this->liftMLogo->TabIndex = 31;
 			this->liftMLogo->Text = L"LIFTING MOTOR";
+			// 
+			// crossTMotLogo
+			// 
+			this->crossTMotLogo->AutoEllipsis = true;
+			this->crossTMotLogo->AutoSize = true;
+			this->crossTMotLogo->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->crossTMotLogo->Location = System::Drawing::Point(310, 390);
+			this->crossTMotLogo->Name = L"crossTMotLogo";
+			this->crossTMotLogo->Size = System::Drawing::Size(309, 31);
+			this->crossTMotLogo->TabIndex = 34;
+			this->crossTMotLogo->Text = L"CROSS TRAVEL MOTOR";
+			// 
+			// crossTMotSL
+			// 
+			this->crossTMotSL->AutoSize = true;
+			this->crossTMotSL->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->crossTMotSL->Location = System::Drawing::Point(310, 465);
+			this->crossTMotSL->Name = L"crossTMotSL";
+			this->crossTMotSL->Size = System::Drawing::Size(19, 25);
+			this->crossTMotSL->TabIndex = 33;
+			this->crossTMotSL->Text = L"-";
+			// 
+			// crossTMotModel
+			// 
+			this->crossTMotModel->AutoEllipsis = true;
+			this->crossTMotModel->AutoSize = true;
+			this->crossTMotModel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->crossTMotModel->Location = System::Drawing::Point(310, 424);
+			this->crossTMotModel->Name = L"crossTMotModel";
+			this->crossTMotModel->Size = System::Drawing::Size(219, 31);
+			this->crossTMotModel->TabIndex = 32;
+			this->crossTMotModel->Text = L"Lifting motor model";
 			// 
 			// DataCollector
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(716, 600);
+			this->Controls->Add(this->crossTMotLogo);
+			this->Controls->Add(this->crossTMotSL);
+			this->Controls->Add(this->crossTMotModel);
 			this->Controls->Add(this->liftMLogo);
-			this->Controls->Add(this->liftMmodel2);
+			this->Controls->Add(this->liftMotSL);
 			this->Controls->Add(this->liftMmodel);
 			this->Controls->Add(this->labHProdNum2);
 			this->Controls->Add(this->labHProdNum);
